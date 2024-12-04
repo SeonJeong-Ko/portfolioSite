@@ -1,0 +1,139 @@
+footer {
+  margin: 0;
+  padding: 48px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  border-top: 1px solid #141414;
+  color: #141414;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.item-menu:nth-child(1)::after {
+  left: 0;
+  width: 100%;
+  transition: none;
+}
+
+.card-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#intro {
+  font-size: 240px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 100vw;
+  height: calc(100% - 200px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+#text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.about-item {
+  font-size: 18px;
+  line-height: 2;
+  text-align: center;
+}
+
+.pageMove {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 40px;
+  right: 20px;
+}
+
+.pageMove-item {
+  font-family: 'SUIT', sans-serif;
+  font-size: 23px;
+  font-weight: bold;
+  cursor: pointer;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.pageMove-item.visible {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.pageMove-item:hover {
+  animation: wiggle 1s infinite alternate;
+}
+
+@keyframes wiggle {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(10px);
+  }
+}
+
+.card {
+  opacity: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: calc(100% - 200px);
+  padding: 40px;
+  transform: translate(-50%, -50%) scale(0.98);
+  transition: all 0.8s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  pointer-events: none;
+  cursor: pointer;
+}
+
+.card.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+}
+
+.card.hidden {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.98);
+  pointer-events: none;
+  display: none;
+}
+
+.cursor-text {
+  position: absolute;
+  font-family: 'SUIT', sans-serif;
+  font-size: 16px;
+  color: #121212;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}

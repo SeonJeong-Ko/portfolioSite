@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="SJ" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 450 450">
+  <!-- Generator: Adobe Illustrator 29.0.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 186)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: none;
+        stroke: #141414;
+        stroke-miterlimit: 10;
+        stroke-width: 40px;
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: draw 2.4s ease-in-out forwards;
+      }
+
+      @keyframes draw {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+    </style>
+  </defs>
+  <g id="SJ-item">
+    <path id="S" class="st0" d="M202.1,164.8c0-48.5-30.6-80.2-74.4-80.2s-74,33.3-74,74.2,33.2,74,74,74,74,33.2,74,74-33.2,74.2-74,74.2-74.4-31.7-74.4-80.2"/>
+    <path id="J" class="st0" d="M396.7,69.1v238.6c0,39.7-32.2,72-71.8,72s-72.1-30.2-72.1-77.9"/>
+    <line id="J1" data-name="J" class="st0" x1="269.9" y1="89.3" x2="362.9" y2="89.3"/>
+  </g>
+</svg>
