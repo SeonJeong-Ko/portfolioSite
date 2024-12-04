@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
   // 이미지 랜덤 배치
   function positionImagesRandomly(container, images) {
-    const baseSize = 800;
+    const baseSize = window.innerWidth <= 480 ? 600 : 800;
     const containerWidth = baseSize + images.length * 460;
     const containerHeight = baseSize + images.length * 200;
 
