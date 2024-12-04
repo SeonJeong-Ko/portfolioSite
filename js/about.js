@@ -13,18 +13,29 @@ document.addEventListener("DOMContentLoaded", function () {
   cursorText.textContent = "click me!";
   document.body.appendChild(cursorText);
 
-  let cursorX = 0, cursorY = 0;
-  let targetX = 0, targetY = 0;
+  let cursorX = window.innerWidth / 2;
+  let cursorY = window.innerHeight * 0.7;
+  let targetX = cursorX;
+  let targetY = cursorY;
+  let isInitialPosition = true;
 
   function updateCursorPosition() {
     const speed = 0.1;
     cursorX += (targetX - cursorX) * speed;
     cursorY += (targetY - cursorY) * speed;
 
-    cursorText.style.left = `${cursorX + 10}px`;
-    cursorText.style.top = `${cursorY + 10}px`;
+    cursorText.style.left = `${cursorX}px`;
+    cursorText.style.top = `${cursorY}px`;
 
     requestAnimationFrame(updateCursorPosition);
+  }
+
+  function setCursorCenterStyle(center) {
+    if (center) {
+      cursorText.style.transform = "translate(-50%, -50%)";
+    } else {
+      cursorText.style.transform = "translate(10px, 10px)";
+    }
   }
 
   // 'HELLO!' animation
@@ -32,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
     introElement.style.pointerEvents = "auto";
     introElement.textContent = "";
     index = 0;
-  
+
     function type() {
       if (index < text.length) {
         introElement.textContent += text[index];
@@ -79,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
       card.classList.remove("active");
       card.classList.add("hidden");
     });
-  
+
     introElement.style.opacity = 1;
     introElement.style.pointerEvents = "auto";
     isHelloState = true;
@@ -89,11 +100,16 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("mousemove", function (e) {
     targetX = e.pageX;
     targetY = e.pageY;
+
+    if (isInitialPosition) {
+      isInitialPosition = false;
+      setCursorCenterStyle(false);
+    }
   });
 
   document.addEventListener("mouseover", function (e) {
     const target = e.target;
-  
+
     if (target === introElement || target.closest(".card")) {
       cursorText.style.opacity = 1;
     } else {
@@ -110,6 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  setCursorCenterStyle(true);
   typeText();
   updateCursorPosition();
 });
