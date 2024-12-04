@@ -137,3 +137,19 @@ footer {
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
 }
+
+/* media */
+@media screen and (max-width: 480px) {
+  footer {
+    padding: 28px 20px;
+    gap: 28px;
+  }
+
+  #intro {
+    font-size: 26vw;
+  }
+
+  .about-item {
+    font-size: 16px;
+  }
+}
