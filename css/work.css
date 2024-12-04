@@ -419,3 +419,40 @@ body.modal-open {
   background-color: #141414;
   transition: width 0.1s ease;
 }
+
+
+/* media */
+@media screen and (max-width: 480px) {
+  .workPage {
+    font-size: 38px;
+    height: 34px;
+  }
+
+  .workPage:hover {
+    height: 48px;
+  }
+
+  .category {
+    font-size: 20px;
+  }
+
+  .guide {
+    padding: 48px 0;
+    font-size: 14px;
+    font-weight: normal;
+  }
+
+  #page {
+    font-size: 28px;
+    gap: 18px;
+  }
+
+  #page label .floor {
+    width: 42px;
+    height: 42px;
+  }
+
+  .item-work img {
+    scale: 80%;
+  }
+}
