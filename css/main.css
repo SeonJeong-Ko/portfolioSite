@@ -95,3 +95,49 @@
   transform: translateY(0);
   transition-delay: .3s;
 }
+
+
+/* media */
+@media screen and (max-width: 1024px) {
+  .layer {
+    font-size: 38vw;
+    left: 51%;
+  }
+
+  .act {
+    font-size: 46px;
+    bottom: 20%;
+  }
+
+  .layer-intro {
+    gap: 24px;
+    flex-direction: column;
+    bottom: 4%;
+  }
+
+  .item-intro {
+    font-size: 18px;
+    width: 280px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .layer {
+    top: 51%;
+  }
+
+  .act {
+    font-size: 40px;
+    bottom: 18%;
+  }
+
+  .layer-intro {
+    gap: 20px;
+    bottom: 0;
+  }
+
+  .item-intro {
+    font-size: 14px;
+    width: 182px;
+  }
+}
