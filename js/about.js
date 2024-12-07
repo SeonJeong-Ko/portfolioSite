@@ -20,14 +20,17 @@ document.addEventListener("DOMContentLoaded", function () {
   let isInitialPosition = true;
 
   function updateCursorPosition() {
-    const speed = 0.1;
-    cursorX += (targetX - cursorX) * speed;
-    cursorY += (targetY - cursorY) * speed;
+    const isMobile = window.matchMedia("(max-width: 480px)").matches;
 
-    cursorText.style.left = `${cursorX}px`;
-    cursorText.style.top = `${cursorY}px`;
+    if (!isMobile) {
+      const speed = 0.1;
+      cursorX += (targetX - cursorX) * speed;
+      cursorY += (targetY - cursorY) * speed;
 
-    requestAnimationFrame(updateCursorPosition);
+      cursorText.style.left = `${cursorX}px`;
+      cursorText.style.top = `${cursorY}px`;
+      requestAnimationFrame(updateCursorPosition);
+    }
   }
 
   function setCursorCenterStyle(center) {
@@ -53,6 +56,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     type();
   }
+  
+  function hideCursorTextForMobile(immediate = false) {
+    const isMobile = window.matchMedia("(max-width: 480px)").matches;
+    if (isMobile) {
+      cursorText.style.transition = immediate ? "none" : "opacity 0.3s ease-in";
+      cursorText.style.opacity = 0;
+    }
+  }
+  
+  function showCursorTextForMobile() {
+    const isMobile = window.matchMedia("(max-width: 480px)").matches;
+    if (isMobile) {
+      cursorText.style.transition = "opacity 0.3s ease-in";
+      setTimeout(() => {
+        cursorText.style.opacity = 1;
+      }, 1200);
+    }
+  }
 
   // nextCard
   function showNextCard() {
@@ -62,14 +83,25 @@ document.addEventListener("DOMContentLoaded", function () {
       isHelloState = false;
       cardIndex = 0;
       activateCard(cardIndex);
+      hideCursorTextForMobile();
     } else {
       if (cardIndex < cards.length - 1) {
         activateCard(cardIndex + 1);
+        hideCursorTextForMobile();
       } else {
         resetToHello();
+        hideCursorTextForMobile();
       }
     }
   }
+
+  cards.forEach(card => {
+    card.addEventListener("click", () => {
+      if (card.classList.contains("active")) {
+        showNextCard();
+      }
+    });
+  });
 
   function activateCard(index) {
     cards.forEach((card, i) => {
@@ -77,7 +109,15 @@ document.addEventListener("DOMContentLoaded", function () {
       card.style.pointerEvents = "none";
       if (i < index) card.classList.add("hidden");
     });
+
     const targetCard = cards[index];
+    
+    if (index === 1) {
+      hideCursorTextForMobile(true);
+    } else {
+      showCursorTextForMobile();
+    }
+
     setTimeout(() => {
       targetCard.classList.add("active");
       cards[index].style.pointerEvents = "auto";
@@ -94,16 +134,38 @@ document.addEventListener("DOMContentLoaded", function () {
     introElement.style.opacity = 1;
     introElement.style.pointerEvents = "auto";
     isHelloState = true;
+
+    hideCursorTextForMobile(true);
+    setTimeout(showCursorTextForMobile, 200);
+
     typeText();
   }
 
-  document.addEventListener("mousemove", function (e) {
-    targetX = e.pageX;
-    targetY = e.pageY;
+  function updateCursorTextForMobile() {
+    const isMobile = window.matchMedia("(max-width: 480px)").matches;
+    if (isMobile) {
+      cursorText.textContent = "touch me!";
+      cursorText.style.position = "fixed";
+      cursorText.style.left = "50%";
+      cursorText.style.bottom = "30%";
+      cursorText.style.transform = "translateX(-50%)";
+    } else {
+      cursorText.textContent = "click me!";
+      cursorText.style.position = "absolute";
+      cursorText.style.bottom = "auto";
+    }
+  }
 
-    if (isInitialPosition) {
-      isInitialPosition = false;
-      setCursorCenterStyle(false);
+  document.addEventListener("mousemove", function (e) {
+    const isMobile = window.matchMedia("(max-width: 480px)").matches;
+    if (!isMobile) {
+      targetX = e.pageX;
+      targetY = e.pageY;
+
+      if (isInitialPosition) {
+        isInitialPosition = false;
+        setCursorCenterStyle(false);
+      }
     }
   });
 
@@ -126,6 +188,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  window.addEventListener("resize", updateCursorTextForMobile);
+  updateCursorTextForMobile();
   setCursorCenterStyle(true);
   typeText();
   updateCursorPosition();
