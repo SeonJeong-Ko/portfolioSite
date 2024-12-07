@@ -233,17 +233,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       }
     }
-  }
-  
-  document.addEventListener("mousemove", (e) => {
-    lastMouseX = e.clientX;
-    lastMouseY = e.clientY;
-    updateCursor();
-  });
-  
-  window.addEventListener('scroll', () => {
-    updateCursor();
-  });  
+  }  
 
   document.addEventListener("mousemove", (e) => {
     lastMouseX = e.clientX;
