@@ -162,6 +162,8 @@ input {
   text-align: center;
   border-radius: 50%;
   transition: all 0.3s ease;
+  box-sizing: border-box;
+  position: relative;
 }
 
 #page label .floor:hover {
