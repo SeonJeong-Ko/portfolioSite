@@ -68,7 +68,7 @@ body::-webkit-scrollbar {
 
 .workPage.active {
   opacity: 1;
-  height: 100%;
+  height: auto;
   overflow-x: scroll;
 }
 
@@ -439,6 +439,7 @@ body.modal-open {
   }
 
   .category {
+    margin: 0 16px;
     font-size: 20px;
   }
 
@@ -454,12 +455,24 @@ body.modal-open {
   }
 
   #page label .floor {
-    width: 42px;
-    height: 42px;
+    width: 36px;
+    height: 36px;
+    font-size: 24px;
+  }
+
+  .item-work {
+    widht: 100%;
+    height: auto;
   }
 
   .item-work img {
-    max-width: 90%;
+    max-width: 80%;
     height: auto;
+    touch-events: auto;
+  }
+
+  input[type="radio"] + lable {
+    cursor: pointer;
+    touch-action: manipulation;
   }
 }
