@@ -59,6 +59,11 @@ document.addEventListener('DOMContentLoaded', function () {
     nextFloors.forEach(floor => floor.classList.toggle('fixed', scrollPosition >= threshold));
   }
 
+  // let floor = sessionStorage.getItem("currentFloor");
+  // if (floor !== null) {
+  //   radios[floor].checked = true;
+  // }
+
   //스크롤 초기화
   function resetWorkPageScroll() {
     radios.forEach((radio) => {
@@ -110,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
   // 이미지 랜덤 배치
   function positionImagesRandomly(container, images) {
-    const baseSize = window.innerWidth <= 480 ? 600 : 800;
+    const baseSize = 800;
     const containerWidth = baseSize + images.length * 460;
     const containerHeight = baseSize + images.length * 200;
 
@@ -228,7 +233,17 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       }
     }
-  }  
+  }
+  
+  document.addEventListener("mousemove", (e) => {
+    lastMouseX = e.clientX;
+    lastMouseY = e.clientY;
+    updateCursor();
+  });
+  
+  window.addEventListener('scroll', () => {
+    updateCursor();
+  });  
 
   document.addEventListener("mousemove", (e) => {
     lastMouseX = e.clientX;
@@ -249,11 +264,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   radios.forEach((radio) => {
     radio.addEventListener('change', function () {
-      setTimeout(() => {
-        resetWorkPageScroll();
-        updateWorkPageStyles();
-        updateProgressBar();
-      }, 2);
+      resetWorkPageScroll();
+      updateWorkPageStyles();
+      updateProgressBar();
     });
   });
 
