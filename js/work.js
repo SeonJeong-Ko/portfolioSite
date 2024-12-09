@@ -254,9 +254,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   radios.forEach((radio) => {
     radio.addEventListener('change', function () {
-      resetWorkPageScroll();
-      updateWorkPageStyles();
-      updateProgressBar();
+      setTimeout(() => {
+        resetWorkPageScroll();
+        updateWorkPageStyles();
+        updateProgressBar();
+      }, 10);
     });
   });
 
