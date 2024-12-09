@@ -242,7 +242,7 @@ body {
   width: 2px;
   height: 20px;
   background-color: #141414;
-  transform: translate(-50%, -50%) translateY(5px);
+  transform: translate(-50%, -50%) translateY(8px);
 }
 
 /* Down arrow */
@@ -267,7 +267,7 @@ body {
   width: 2px;
   height: 20px;
   background-color: #141414;
-  transform: translate(-50%, -50%) translateY(-5px);
+  transform: translate(-50%, -50%) translateY(-8px);
 }
 
 /* Left arrow */
@@ -292,7 +292,7 @@ body {
   width: 20px;
   height: 2px;
   background-color: #141414;
-  transform: translate(-50%, -50%) translateX(5px);
+  transform: translate(-50%, -50%) translateX(8px);
 }
 
 /* Right arrow */
@@ -317,7 +317,7 @@ body {
   width: 20px;
   height: 2px;
   background-color: #141414;
-  transform: translate(-50%, -50%) translateX(-5px);
+  transform: translate(-50%, -50%) translateX(-8px);
 }
 
 @keyframes shake1 {
