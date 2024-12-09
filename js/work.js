@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function () {
         resetWorkPageScroll();
         updateWorkPageStyles();
         updateProgressBar();
-      }, 10);
+      }, 2);
     });
   });
 
