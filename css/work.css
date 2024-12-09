@@ -37,10 +37,6 @@ body::-webkit-scrollbar {
   height: 60px;
 }
 
-.workPage-floor {
-  z-index: 2;
-}
-
 .category {
   margin: 0 32px;
   font-weight: normal;
@@ -68,7 +64,7 @@ body::-webkit-scrollbar {
 
 .workPage.active {
   opacity: 1;
-  height: auto;
+  height: 100%;
   overflow-x: scroll;
 }
 
@@ -166,8 +162,6 @@ input {
   text-align: center;
   border-radius: 50%;
   transition: all 0.3s ease;
-  box-sizing: border-box;
-  position: relative;
 }
 
 #page label .floor:hover {
@@ -186,7 +180,7 @@ input {
   transform: translateY(20px);
   transition: opacity 0.3s ease, transform 0.3s ease;
   max-width: 100%;
-  max-height: auto;
+  max-height: 100%;
   box-sizing: border-box;
 }
 
@@ -424,55 +418,4 @@ body.modal-open {
   width: 0%;
   background-color: #141414;
   transition: width 0.1s ease;
-}
-
-
-/* media */
-@media screen and (max-width: 480px) {
-  .workPage {
-    font-size: 38px;
-    height: 34px;
-  }
-
-  .workPage:hover {
-    height: 48px;
-  }
-
-  .category {
-    margin: 0 16px;
-    font-size: 20px;
-  }
-
-  .guide {
-    padding: 48px 0;
-    font-size: 14px;
-    font-weight: normal;
-  }
-
-  #page {
-    font-size: 28px;
-    gap: 18px;
-  }
-
-  #page label .floor {
-    width: 36px;
-    height: 36px;
-    font-size: 24px;
-  }
-
-  .item-work {
-    widht: 100%;
-    height: auto;
-  }
-
-  .item-work img {
-    max-width: 80%;
-    height: auto;
-    touch-events: auto;
-  }
-
-  input[type="radio"] + lable {
-    cursor: pointer;
-    touch-action: manipulation;
-  }
 }
