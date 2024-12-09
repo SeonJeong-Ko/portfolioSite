@@ -37,6 +37,10 @@ body::-webkit-scrollbar {
   height: 60px;
 }
 
+.workPage-floor {
+  z-index: 2;
+}
+
 .category {
   margin: 0 32px;
   font-weight: normal;
