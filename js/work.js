@@ -59,11 +59,6 @@ document.addEventListener('DOMContentLoaded', function () {
     nextFloors.forEach(floor => floor.classList.toggle('fixed', scrollPosition >= threshold));
   }
 
-  // let floor = sessionStorage.getItem("currentFloor");
-  // if (floor !== null) {
-  //   radios[floor].checked = true;
-  // }
-
   //스크롤 초기화
   function resetWorkPageScroll() {
     radios.forEach((radio) => {
